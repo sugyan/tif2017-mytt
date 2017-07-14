@@ -19,7 +19,7 @@ namespace :timetable do
               detail: item['detail'],
               start: start_time,
               end: end_time,
-              state: stage
+              stage: stage
             }
           end
         end
