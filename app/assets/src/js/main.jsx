@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 import { createStore } from 'redux';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/ja';
 import 'whatwg-fetch';
 
-import List from './list';
+import TimeTable from './timetable';
+import Result from './result';
 import reducers from './redux/reducers';
 import { updateTimeTable } from './redux/actions';
 
@@ -25,28 +27,32 @@ class Main extends React.Component {
     }
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-inverse navbar-fixed-top">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                            <a>
-                                <span className="navbar-brand">TIF 2017 MyTT</span>
-                            </a>
+            <BrowserRouter>
+                <div>
+                    <nav className="navbar navbar-inverse navbar-fixed-top">
+                        <div className="container-fluid">
+                            <div className="navbar-header">
+                                <Link to="/">
+                                    <span className="navbar-brand">TIF 2017 MyTT</span>
+                                </Link>
+                            </div>
                         </div>
+                    </nav>
+                    <div className="container-fluid">
+                        <Switch>
+                            <Route exact path="/" component={TimeTable} />
+                            <Route path="/result" component={Result} />
+                        </Switch>
                     </div>
-                </nav>
-                <div className="container-fluid">
-                    {this.props.children}
-                    <List />
                 </div>
-            </div>
+            </BrowserRouter>
         );
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
     const App = connect(
-        undefined,
+        (state) => state,
         (dispatch) => {
             return {
                 fetchTimeTable: (data) => {

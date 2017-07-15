@@ -23,7 +23,7 @@ namespace :timetable do
         }[day]
         stages.each do |stage, items|
           items.each do |item|
-            id = "#{colors[stage]}-#{item['start']}"
+            id = "#{day}-#{colors[stage]}-#{item['start']}"
             start_time = Time.zone.strptime("#{date} #{item['start']}", '%Y-%m-%d %H%M')
             end_time   = Time.zone.strptime("#{date} #{item['end']}",   '%Y-%m-%d %H%M')
             results << {

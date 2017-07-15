@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 
 import {
     UPDATE_TIMETABLE,
-    FILTER_TOGGLE_CHECKBOX, FILTER_CHANGE_KEYWORD
+    FILTER_TOGGLE_CHECKBOX, FILTER_CHANGE_KEYWORD,
+    SELECT_ITEM,
+    GENERATE_RESULT
 } from './actions';
 
 const timetable = combineReducers({
@@ -14,6 +16,28 @@ const timetable = combineReducers({
             return state;
         }
     },
+    selected: (state = {}, action) => {
+        const newSelected = Object.assign({}, state);
+        switch (action.type) {
+        case SELECT_ITEM:
+            if (action.checked) {
+                newSelected[action.id] = true;
+            } else {
+                delete newSelected[action.id];
+            }
+            return newSelected;
+        default:
+            return state;
+        }
+    },
+    result: (state = null, action) => {
+        switch (action.type) {
+        case GENERATE_RESULT:
+            return action.src;
+        default:
+            return state;
+        }
+    }
 });
 
 const filter = combineReducers({
