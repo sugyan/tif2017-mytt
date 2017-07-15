@@ -6,6 +6,12 @@ import 'whatwg-fetch';
 import { generateResult } from './redux/actions';
 
 class Result extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            url: undefined
+        };
+    }
     componentDidMount() {
         this.props.dispatch(generateResult(null));
         if (Object.keys(this.props.timetable.selected).length === 0) {
@@ -42,13 +48,20 @@ class Result extends React.Component {
               + '&text=' + encodeURIComponent(`俺のタイテ ${json.url}`)
               + '&url=' + encodeURIComponent(window.location.href)
               + '&hashtags=TIF2017_MyTT';
-            window.open(url, '_blank');
+            this.setState({ url: url });
         });
     }
     render() {
         const result = this.props.timetable.result
             ? <img src={this.props.timetable.result} style={{ maxWidth: '100%' }} />
             : <div>画像を生成しています...</div>;
+        let button = this.state.url
+            ? <a className="btn btn-primary" href={this.state.url} target="_blank">
+                Tweetする
+            </a>
+            : <button className="btn btn-info" onClick={this.handleClickTweetButton.bind(this)}>
+                URLを取得
+            </button>;
         return (
             <div>
                 <div>{result}</div>
@@ -58,11 +71,7 @@ class Result extends React.Component {
                         選び直す
                     </button>
                 </div>
-                <div className="pull-right">
-                    <button className="btn btn-primary" onClick={this.handleClickTweetButton.bind(this)}>
-                        Tweetする
-                    </button>
-                </div>
+                <div className="pull-right">{button}</div>
             </div>
         );
     }
