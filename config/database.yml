@@ -79,7 +79,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: tif2017-mytt_production
-  username: tif2017-mytt
-  password: <%= ENV['TIF2017-MYTT_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

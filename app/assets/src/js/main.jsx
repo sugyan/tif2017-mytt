@@ -10,7 +10,7 @@ import 'whatwg-fetch';
 import TimeTable from './timetable';
 import Result from './result';
 import reducers from './redux/reducers';
-import { updateTimeTable } from './redux/actions';
+import { updateTimeTable, selectItems, generateResult } from './redux/actions';
 
 class Main extends React.Component {
     componentDidMount() {
@@ -42,6 +42,7 @@ class Main extends React.Component {
                         <Switch>
                             <Route exact path="/" component={TimeTable} />
                             <Route path="/result" component={Result} />
+                            <Route path="/result/:key" component={Result} />
                         </Switch>
                     </div>
                 </div>
@@ -57,6 +58,24 @@ window.addEventListener('DOMContentLoaded', () => {
             return {
                 fetchTimeTable: (data) => {
                     dispatch(updateTimeTable(data));
+
+                    const result = document.getElementById('result');
+                    if (result) {
+                        const ids = JSON.parse(result.value);
+                        dispatch(selectItems(ids));
+
+                        fetch('/api/generate', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ ids: ids })
+                        }).then((response) => {
+                            return response.json();
+                        }).then((json) => {
+                            dispatch(generateResult(json.result));
+                        });
+                    }
                 }
             };
         }

@@ -53,3 +53,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'redis-rails', '~> 5.0'
 gem 'rmagick', '~> 2.16'
+gem 'twitter', '~> 6.1'

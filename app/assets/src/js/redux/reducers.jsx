@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import {
     UPDATE_TIMETABLE,
     FILTER_TOGGLE_CHECKBOX, FILTER_CHANGE_KEYWORD,
-    SELECT_ITEM,
+    SELECT_ITEM, SELECT_ITEMS,
     GENERATE_RESULT
 } from './actions';
 
@@ -25,6 +25,11 @@ const timetable = combineReducers({
             } else {
                 delete newSelected[action.id];
             }
+            return newSelected;
+        case SELECT_ITEMS:
+            action.ids.forEach((id) => {
+                newSelected[id] = true;
+            });
             return newSelected;
         default:
             return state;
