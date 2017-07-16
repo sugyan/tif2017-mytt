@@ -3,15 +3,15 @@ namespace :timetable do
     return if Time.zone.now > Time.zone.local(2017, 8, 6)
 
     colors = {
-      'HOT STAGE'          => '#FA3D56',
-      'DOLL FACTORY'       => '#FF88B4',
-      'SKY STAGE'          => '#39CDFE',
-      'SMILE GARDEN'       => '#B1DD00',
-      'FESTIVAL STAGE'     => '#FFDF33',
-      'DREAM STAGE'        => '#00C858',
-      'INFO CENTRE'        => '#FB3CA6',
-      'HEAT GARAGE'        => '#FF783B',
-      'フジさんのヨコ STAGE' => '#51D3F8'
+      'HOT STAGE'            => '#FB1A39',
+      'HEAT GARAGE'          => '#FF651F',
+      'SMILE GARDEN'         => '#9FC700',
+      'DOLL FACTORY'         => '#FF6AA2',
+      'SKY STAGE'            => '#07C1FE',
+      'FESTIVAL STAGE'       => '#FED700',
+      'DREAM STAGE'          => '#009C45',
+      'フジさんのヨコ STAGE' => '#06708F',
+      'INFO CENTRE'          => '#E4007F'
     }
     results = []
     open('http://www.idolfes.com/2017/timetable/time.json') do |f|

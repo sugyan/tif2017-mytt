@@ -61,15 +61,15 @@ const filter = combineReducers({
         }
     },
     stage: (state = {
-        '#FA3D56': true,
-        '#FF88B4': true,
-        '#39CDFE': true,
-        '#B1DD00': true,
-        '#FFDF33': true,
-        '#00C858': true,
-        '#FB3CA6': true,
-        '#FF783B': true,
-        '#51D3F8': true
+        '#FB1A39': true,
+        '#FF651F': true,
+        '#9FC700': true,
+        '#FF6AA2': true,
+        '#07C1FE': true,
+        '#FED700': true,
+        '#009C45': true,
+        '#06708F': true,
+        '#E4007F': true,
     }, action) => {
         switch(action.type) {
         case FILTER_TOGGLE_CHECKBOX:

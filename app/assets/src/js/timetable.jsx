@@ -17,14 +17,14 @@ class Form extends React.Component {
         ];
         this.stages = [
             { label: 'HOT STAGE',            key: '#FB1A39' },
+            { label: 'HEAT GARAGE',          key: '#FF651F' },
+            { label: 'SMILE GARDEN',         key: '#9FC700' },
             { label: 'DOLL FACTORY',         key: '#FF6AA2' },
             { label: 'SKY STAGE',            key: '#07C1FE' },
-            { label: 'SMILE GARDEN',         key: '#9FC700' },
             { label: 'FESTIVAL STAGE',       key: '#FED700' },
             { label: 'DREAM STAGE',          key: '#009C45' },
+            { label: 'フジさんのヨコ STAGE', key: '#06708F' },
             { label: 'INFO CENTRE',          key: '#E4007F' },
-            { label: 'HEAT GARAGE',          key: '#FF651F' },
-            { label: 'フジさんのヨコ STAGE', key: '#06708F' }
         ];
     }
     render() {
