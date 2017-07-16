@@ -16,15 +16,15 @@ class Form extends React.Component {
             { label: '8/6(日)', key: '08-06' }
         ];
         this.stages = [
-            { label: 'HOT STAGE',            key: '#FA3D56' },
-            { label: 'DOLL FACTORY',         key: '#FF88B4' },
-            { label: 'SKY STAGE',            key: '#39CDFE' },
-            { label: 'SMILE GARDEN',         key: '#B1DD00' },
-            { label: 'FESTIVAL STAGE',       key: '#FFDF33' },
-            { label: 'DREAM STAGE',          key: '#00C858' },
-            { label: 'INFO CENTRE',          key: '#FB3CA6' },
-            { label: 'HEAT GARAGE',          key: '#FF783B' },
-            { label: 'フジさんのヨコ STAGE', key: '#51D3F8' }
+            { label: 'HOT STAGE',            key: '#FB1A39' },
+            { label: 'DOLL FACTORY',         key: '#FF6AA2' },
+            { label: 'SKY STAGE',            key: '#07C1FE' },
+            { label: 'SMILE GARDEN',         key: '#9FC700' },
+            { label: 'FESTIVAL STAGE',       key: '#FED700' },
+            { label: 'DREAM STAGE',          key: '#009C45' },
+            { label: 'INFO CENTRE',          key: '#E4007F' },
+            { label: 'HEAT GARAGE',          key: '#FF651F' },
+            { label: 'フジさんのヨコ STAGE', key: '#06708F' }
         ];
     }
     render() {
