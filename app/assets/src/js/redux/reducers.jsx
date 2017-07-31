@@ -70,6 +70,7 @@ const filter = combineReducers({
         '#009C45': true,
         '#06708F': true,
         '#E4007F': true,
+        '#808080': false,
     }, action) => {
         switch(action.type) {
         case FILTER_TOGGLE_CHECKBOX:

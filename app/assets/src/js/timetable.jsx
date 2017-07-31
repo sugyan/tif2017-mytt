@@ -25,6 +25,7 @@ class Form extends React.Component {
             { label: 'DREAM STAGE',          key: '#009C45' },
             { label: 'フジさんのヨコ STAGE', key: '#06708F' },
             { label: 'INFO CENTRE',          key: '#E4007F' },
+            { label: 'GREETING AREA',        key: '#808080' }
         ];
     }
     render() {
