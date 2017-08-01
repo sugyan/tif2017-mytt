@@ -164,7 +164,11 @@ class TimeTable extends React.Component {
             if (! this.props.filter.stage[item.color]) {
                 return false;
             }
-            if (regexp && ! item.artist.match(regexp)) {
+            var artist = item.artist;
+            if (item.detail !== 'null') {
+                artist += ` (${item.detail})`;
+            }
+            if (regexp && ! artist.match(regexp)) {
                 return false;
             }
             return true;
