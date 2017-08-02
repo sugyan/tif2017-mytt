@@ -62,7 +62,10 @@ class ApiController < ApplicationController
           self.font = Rails.root.join('.fonts', 'ipagp.ttf').to_path
           self.pointsize = 15
         end
-        Magick::Draw.new.annotate(img, 0, 0, 265, 24, item[:artist].tr("\n", ' ').gsub("\xe2\x9d\xa4\xef\xb8\x8e", "\xe2\x99\xa5")) do
+        artist = item[:artist].tr("\n", ' ').gsub("\xe2\x9d\xa4\xef\xb8\x8e", "\xe2\x99\xa5")
+        artist += ' (TGIF)' if item[:filter_key] == 'tgif'
+        artist += ' (縁日)' if item[:filter_key] == 'ennichi'
+        Magick::Draw.new.annotate(img, 0, 0, 265, 24, artist) do
           self.font = Rails.root.join('.fonts', 'ipagp.ttf').to_path
           self.font_weight = Magick::BoldWeight
           self.pointsize = 15
