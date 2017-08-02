@@ -6,4 +6,5 @@ json.array! @data do |item|
   json.color  item[:color]
   json.artist item[:artist]
   json.detail item[:detail]
+  json.filter_key item[:filter_key]
 end

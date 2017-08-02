@@ -61,16 +61,18 @@ const filter = combineReducers({
         }
     },
     stage: (state = {
-        '#FB1A39': true,
-        '#FF651F': true,
-        '#9FC700': true,
-        '#FF6AA2': true,
-        '#07C1FE': true,
-        '#FED700': true,
-        '#009C45': true,
-        '#06708F': true,
-        '#E4007F': true,
-        '#808080': false,
+        'hot_stage':      true,
+        'heat_garage':    true,
+        'smile_garden':   true,
+        'doll_factory':   true,
+        'sky_stage':      true,
+        'festival_stage': true,
+        'dream_stage':    true,
+        '5g_stage':       true,
+        'info_centre':    true,
+        'greeting':       false,
+        'tgif':           false,
+        'ennichi':        false,
     }, action) => {
         switch(action.type) {
         case FILTER_TOGGLE_CHECKBOX:

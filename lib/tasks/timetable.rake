@@ -35,7 +35,18 @@ namespace :timetable do
               start: start_time,
               end: end_time,
               stage: stage,
-              color: colors[stage]
+              color: colors[stage],
+              filter_key: {
+                '#FB1A39' => 'hot_stage',
+                '#FF651F' => 'heat_garage',
+                '#9FC700' => 'smile_garden',
+                '#FF6AA2' => 'doll_factory',
+                '#07C1FE' => 'sky_stage',
+                '#FED700' => 'festival_stage',
+                '#009C45' => 'dream_stage',
+                '#06708F' => '5g_stage',
+                '#E4007F' => 'info_centre'
+              }[colors[stage]]
             }
           end
         end
@@ -60,9 +71,48 @@ namespace :timetable do
             start: start_time,
             end: end_time,
             stage: stage,
-            color: color
+            color: color,
+            filter_key: 'greeting'
           }
         end
+      end
+    end
+    open('http://www.idolfes.com/2017/tgif.tsv', 'r:UTF-16') do |f|
+      f.read.encode('UTF-8').each_line do |line|
+        day, start_time, end_time, lane, artist, detail = line.chomp.split(/\t/)
+        date = dates[day]
+        id = "#{day}-tgif-#{start_time}-#{lane}"
+        start_time = Time.zone.strptime("#{date} #{start_time}", '%Y-%m-%d %H%M')
+        end_time   = Time.zone.strptime("#{date} #{end_time}",   '%Y-%m-%d %H%M')
+        results << {
+          id: id,
+          stage: "GRAND MARKET (#{lane})",
+          artist: artist,
+          detail: detail,
+          start: start_time,
+          end: end_time,
+          color: '#808080',
+          filter_key: 'tgif'
+        }
+      end
+    end
+    open('http://www.idolfes.com/2017/ennichi.tsv', 'r:UTF-16') do |f|
+      f.read.encode('UTF-8').each_line do |line|
+        day, start_time, end_time, lane, artist = line.chomp.split(/\t/)
+        date = dates[day]
+        id = "#{day}-tgif-#{start_time}-#{lane}"
+        start_time = Time.zone.strptime("#{date} #{start_time}", '%Y-%m-%d %H%M')
+        end_time   = Time.zone.strptime("#{date} #{end_time}",   '%Y-%m-%d %H%M')
+        results << {
+          id: id,
+          stage: "GRAND MARKET (#{lane})",
+          artist: artist,
+          detail: 'null',
+          start: start_time,
+          end: end_time,
+          color: '#808080',
+          filter_key: 'ennichi'
+        }
       end
     end
     results.sort_by!.with_index { |v, i| [v[:start], i] }

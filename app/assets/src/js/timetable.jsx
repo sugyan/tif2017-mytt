@@ -16,16 +16,18 @@ class Form extends React.Component {
             { label: '8/6(日)', key: '08-06' }
         ];
         this.stages = [
-            { label: 'HOT STAGE',            key: '#FB1A39' },
-            { label: 'HEAT GARAGE',          key: '#FF651F' },
-            { label: 'SMILE GARDEN',         key: '#9FC700' },
-            { label: 'DOLL FACTORY',         key: '#FF6AA2' },
-            { label: 'SKY STAGE',            key: '#07C1FE' },
-            { label: 'FESTIVAL STAGE',       key: '#FED700' },
-            { label: 'DREAM STAGE',          key: '#009C45' },
-            { label: 'フジさんのヨコ STAGE', key: '#06708F' },
-            { label: 'INFO CENTRE',          key: '#E4007F' },
-            { label: 'GREETING AREA',        key: '#808080' }
+            { label: 'HOT STAGE',            key: 'hot_stage' },
+            { label: 'HEAT GARAGE',          key: 'heat_garage' },
+            { label: 'SMILE GARDEN',         key: 'smile_garden' },
+            { label: 'DOLL FACTORY',         key: 'doll_factory' },
+            { label: 'SKY STAGE',            key: 'sky_stage' },
+            { label: 'FESTIVAL STAGE',       key: 'festival_stage' },
+            { label: 'DREAM STAGE',          key: 'dream_stage' },
+            { label: 'フジさんのヨコ STAGE', key: '5g_stage' },
+            { label: 'INFO CENTRE',          key: 'info_centre' },
+            { label: 'GREETING AREA',        key: 'greeting' },
+            { label: 'TGIF',                 key: 'tgif' },
+            { label: '縁日',                 key: 'ennichi' }
         ];
     }
     render() {
@@ -161,7 +163,7 @@ class TimeTable extends React.Component {
             if (! this.props.filter.day[item.day]) {
                 return false;
             }
-            if (! this.props.filter.stage[item.color]) {
+            if (! this.props.filter.stage[item.filter_key]) {
                 return false;
             }
             var artist = item.artist;
