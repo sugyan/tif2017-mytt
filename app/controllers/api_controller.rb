@@ -10,9 +10,6 @@ class ApiController < ApplicationController
 
   def tweet
     png = generate_image
-    # file = Tempfile.open('', nil, mode: 'w+b')
-    # file.write(png)
-    # p file
     tweet = Tempfile.open do |f|
       f.binmode
       f.write(png)
