@@ -100,7 +100,7 @@ namespace :timetable do
       f.read.encode('UTF-8').each_line do |line|
         day, start_time, end_time, lane, artist = line.chomp.split(/\t/)
         date = dates[day]
-        id = "#{day}-tgif-#{start_time}-#{lane}"
+        id = "#{day}-ennichi-#{start_time}-#{lane}"
         start_time = Time.zone.strptime("#{date} #{start_time}", '%Y-%m-%d %H%M')
         end_time   = Time.zone.strptime("#{date} #{end_time}",   '%Y-%m-%d %H%M')
         results << {
