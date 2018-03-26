@@ -77,7 +77,7 @@ namespace :timetable do
         end
       end
     end
-    open('http://www.idolfes.com/2017/tgif.tsv') do |f|
+    open('http://www.idolfes.com/2017/tgif.tsv', 'r:UTF-8') do |f|
       f.read.each_line do |line|
         day, start_time, end_time, lane, artist, detail = line.chomp.split(/\t/)
         date = dates[day]
@@ -96,7 +96,7 @@ namespace :timetable do
         }
       end
     end
-    open('http://www.idolfes.com/2017/ennichi.tsv') do |f|
+    open('http://www.idolfes.com/2017/ennichi.tsv', 'r:UTF-8') do |f|
       f.read.each_line do |line|
         day, start_time, end_time, lane, artist = line.chomp.split(/\t/)
         date = dates[day]
