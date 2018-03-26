@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/BlockLength
 namespace :timetable do
   task main: :environment do
-    return if Time.zone.now > Time.zone.local(2017, 8, 6)
+    # abort if Time.zone.now > Time.zone.local(2017, 8, 6)
 
     colors = {
       'HOT STAGE'            => '#FB1A39',
@@ -52,8 +52,8 @@ namespace :timetable do
         end
       end
     end
-    open('http://www.idolfes.com/2017/greeting/greeting.tsv', 'r:UTF-16') do |f|
-      f.read.encode('UTF-8').each_line do |line|
+    open('http://www.idolfes.com/2017/greeting/greeting.tsv', 'r:UTF-8') do |f|
+      f.read.each_line do |line|
         day, time, *items = line.split(/\t/)
         start_time, end_time = time.split(/～/)
         date = dates[day]
@@ -77,8 +77,8 @@ namespace :timetable do
         end
       end
     end
-    open('http://www.idolfes.com/2017/tgif.tsv', 'r:UTF-16') do |f|
-      f.read.encode('UTF-8').each_line do |line|
+    open('http://www.idolfes.com/2017/tgif.tsv') do |f|
+      f.read.each_line do |line|
         day, start_time, end_time, lane, artist, detail = line.chomp.split(/\t/)
         date = dates[day]
         id = "#{day}-tgif-#{start_time}-#{lane}"
@@ -96,10 +96,11 @@ namespace :timetable do
         }
       end
     end
-    open('http://www.idolfes.com/2017/ennichi.tsv', 'r:UTF-16') do |f|
-      f.read.encode('UTF-8').each_line do |line|
+    open('http://www.idolfes.com/2017/ennichi.tsv') do |f|
+      f.read.each_line do |line|
         day, start_time, end_time, lane, artist = line.chomp.split(/\t/)
         date = dates[day]
+        next unless date
         id = "#{day}-ennichi-#{start_time}-#{lane}"
         start_time = Time.zone.strptime("#{date} #{start_time}", '%Y-%m-%d %H%M')
         end_time   = Time.zone.strptime("#{date} #{end_time}",   '%Y-%m-%d %H%M')
