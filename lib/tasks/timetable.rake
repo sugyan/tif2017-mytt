@@ -1,7 +1,7 @@
 # rubocop:disable Metrics/BlockLength
 namespace :timetable do
   task main: :environment do
-    # abort if Time.zone.now > Time.zone.local(2017, 8, 6)
+    abort if Time.zone.now > Time.zone.local(2017, 8, 6)
 
     colors = {
       'HOT STAGE'            => '#FB1A39',
